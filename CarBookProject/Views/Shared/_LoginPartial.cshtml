@@ -1,0 +1,145 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    var id = UserManager.GetUserId(User);
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="~/libs/toastr/build/toastr.min.css">
+
+</head>
+<div class="collapse navbar-collapse" id="ftco-nav">
+    @*<ul class="navbar-nav ml-auto">*@
+    <div class="collapse navbar-collapse" id="ftco-nav">
+        @if (SignInManager.IsSignedIn(User))
+        {
+
+            #region MyRegion
+            <div class="collapse navbar-collapse" id="ftco-nav" style="padding-left:20%">
+                <ul class="navbar-nav ml-auto">
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item active"><a asp-action="Index" asp-controller="Home" asp-area="AdminDashboard" class="nav-link">Dashboard</a></li>
+                         
+                    }
+                    @if (UserManager.Users.Where(x => x.Id == id).FirstOrDefault().IsActive == true)
+                    {
+                        if (UserManager.Users.Where(x => x.Id == id).FirstOrDefault().CompanyAccount == true)
+                        {
+                            <li class="nav-item active"><a asp-action="Index" asp-controller="Home" asp-area="CompanyAccount" class="nav-link">Dashboard</a></li>
+                        }
+                  
+
+                    }
+               
+
+
+
+                </ul>
+
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown" style="padding-left:80%">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            My Profile
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            @if (!User.IsInRole("Admin"))
+                            {
+
+                                @if (UserManager.Users.Where(x => x.Id == id).FirstOrDefault().IsActive == true)
+                                {
+                                    if (UserManager.Users.Where(x => x.Id == id).FirstOrDefault().CompanyAccount == true)
+                                    {
+                                        <li>
+                                            <a class="dropdown-item"asp-action="Index" asp-controller="Home" asp-area="CompanyAccount">  @User.Identity.Name </a>
+
+                                        </li>
+                                    }
+                                    else
+                                    {
+
+
+                                        <li>
+                                            <a class="dropdown-item" asp-area="" asp-action="Profile" asp-controller="Home">My Profile  @User.Identity.Name </a>
+
+                                        </li>
+
+                                    }
+
+
+                                }
+                            }
+                            else
+                            {
+                                <li>
+                                    <a class="dropdown-item"asp-action="Index" asp-controller="Home" asp-area="AdminDashboard" >   @User.Identity.Name </a>
+
+                                </li>
+                            }
+                            @*<li>
+            <a class="dropdown-item" asp-area="" asp-action="Profile" asp-controller="Home">My Profile  @User.Identity.Name </a>
+
+        </li>*@
+                            <li>
+                                <form class="dropdown-item " asp-action="Logout" asp-controller="Account">
+                                    <button type="submit" class="nav-link btn btn-link  " style="color:black">Logout</button>
+                                </form>
+                            </li>
+
+                        </ul>
+                    </li>
+
+
+                </ul>
+
+
+            </div>
+            #endregion
+
+
+
+        }
+        else
+        {<ul class="navbar-nav ml-auto" style="padding-left:150%">
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="Register" asp-controller="Account">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="Login" asp-controller="Account">Login</a>
+                </li>
+            </ul>
+        }
+    </div>
+    @*</ul>*@
+</div>
+
+
+@if (TempData["Notification"] != null)
+{
+    //var Noti = TempData.Peek("Notification") as NewPortal.Classes.Notifications;
+    var Noti = Newtonsoft.Json.JsonConvert.DeserializeObject<CarBookProject.Classes.Notifications>(TempData.Peek("Notification").ToString());
+    <script src="~/libs/toastr/build/toastr.min.js"></script>
+    <script type="text/javascript">
+            (toastr.options = {
+                closeButton: true,
+                debug: false,
+                newestOnTop: true,
+                progressBar: true,
+                positionClass: "@Noti.PositionClass.ToString().Replace('_', '-')",
+                preventDuplicates: true,
+                onclick: null,
+                showDuration: 300,
+                hideDuration: 1000,
+                timeOut: @(Noti.TimeOut*1000),
+                extendedTimeOut: @(Noti.TimeOut *500),
+                showEasing: "linear",  //swing linear
+                hideEasing: "swing", //swing linear
+                showMethod: "slideDown", //show fadeIn slideDown
+                hideMethod: "slideUp" //hide fadeOut slideUp
+            });
+        var v = toastr["@Noti.Notification_Type"]('@Noti.Notification_txt', '@Noti.Notification_Title');
+    </script>
+}

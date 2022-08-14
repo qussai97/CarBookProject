@@ -1,0 +1,113 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Account/_LayoutLoginRegister.cshtml";
+}
+
+
+
+
+<!-- Sign up form -->
+<section class="signup">
+    <div class="container">
+        <div class="signup-content register" style="background-image: url('file:///C:\Users\Qusai.Aldughaim\source\repos\CarBookProject\CarBookProject\wwwroot\images\car-11.jpg')  ">
+            <div class="signup-form centerSin  ">
+                <h2 class="form-title" style="text-align:center">Sign up</h2>
+                <form method="POST" class="register-form" asp-action="Register" asp-controller="Account">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group">
+                        <label for="name" style="padding-left:10px "><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input type="text" asp-for="Name" placeholder="Your Name" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" style="padding-left:10px "><i class="zmdi zmdi-email"></i></label>
+                        <input type="email" asp-for="Email" placeholder="Your Email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="pass" style="padding-left:10px "><i class="zmdi zmdi-lock"></i></label>
+                        <input type="password" asp-for="Password" placeholder="Password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="re-pass" style="padding-left:10px "><i class="zmdi zmdi-lock-outline"></i></label>
+                        <input type="password" asp-for="ConfirmPassword" placeholder="Repeat your password" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="re-pass" style="padding-left:10px "><i class="zmdi zmdi-phone"></i></label>
+                        <input asp-for="Mobile" placeholder="Phone Number" />
+                        <span asp-validation-for="Mobile" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" style="vertical-align:central">
+                        <i class="zmdi zmdi-accounts-add"></i>
+                        <input  type="checkbox" asp-for="CompanyAccount" onclick="ShowMeber()" class="agree-term" />
+                        <label asp-for="CompanyAccount" class="label-agree-term"><span><span></span></span>Are You Company Account</label>
+                    </div>
+                    <div id="member" style="display:none">
+                        <div class="form-group" style="vertical-align:central">
+
+                            <input type="checkbox" asp-for="SILVER" class="agree-term"  />
+                            <label  asp-for="SILVER" class="label-agree-term"><span><span></span></span>SILVER</label>
+                        </div>
+                        <div class="form-group" style="vertical-align:central">
+
+                            <input type="checkbox" asp-for="GOLD" class="agree-term"  />
+                            <label  asp-for="GOLD" class="label-agree-term"><span><span></span></span>GOLD</label>
+                        </div>
+                        <div class="form-group" style="vertical-align:central">
+
+                            <input type="checkbox" asp-for="PLATINUM" class="agree-term" />
+                            <label  asp-for="PLATINUM" class="label-agree-term"><span><span></span></span>PLATINUM</label>
+                        </div>
+
+                    </div>
+                    <div class="form-group form-button">
+                        <input type="submit" class="form-submit" value="Register" />
+                    </div>
+                </form>
+                <p class="w-100 text-center">— Or Log In  —</p>
+                <div class="social d-flex text-center">
+                    <br />
+                    <a asp-action="Login" asp-controller="Account" class="px-2 py-2 ml-md-1 rounded"><span class="ion-logo-twitter mr-2"></span> Log In</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+   
+</section>
+
+@section Scripts {
+   
+
+    <script type="text/javascript" src="~/js/"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+          
+          
+          
+
+        });
+
+
+        function ShowMeber() {
+            
+            var comid = document.getElementById("CompanyAccount");
+            var x = document.getElementById("member");
+       
+            if (comid.checked == true) {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+
+    </script>
+
+}
+

@@ -1,0 +1,91 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> _userManager;
+@model BookingCar
+
+
+@{
+    ViewData["Title"] = "Booking";
+    Layout = "~/Areas/Customer/Views/Shared/_CLayout.cshtml";
+}
+
+
+
+
+<!-- Sign up form -->
+<section class="signup">
+    <div class="container">
+        <div class="signup-content register" style="background-image: url('file:///C:\Users\Qusai.Aldughaim\source\repos\CarBookProject\CarBookProject\wwwroot\images\car-11.jpg')  ">
+            <div class="signup-form centerSin  ">
+                <h1><span style="padding-left:45%">  &#9786;</span></h1>
+                <h2 class="form-title" style="text-align:center">Welcome @ViewData["Username"]</h2>
+                <form method="POST" class="register-form" asp-action="Booking" asp-controller="Home" asp-area="Customer">
+                    <div class="form-group">
+                        <label asp-for="From_dt_Time" style="padding-left:10px "><i class="zmdi zmdi-time" ></i></label>
+                        <input  asp-for="From_dt_Time" placeholder="Your Name" />
+                        <span asp-validation-for="From_dt_Time" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Ret_dt_Time" style="padding-left:10px "><i class="zmdi zmdi-timer-off"></i></label>
+                        <input  asp-for="Ret_dt_Time" placeholder="Your Email" />
+                        <span asp-validation-for="Ret_dt_Time" class="text-danger"></span>
+                    </div>
+                    @if (ViewBag.CarAvalaable == true)
+                    {
+                        <div class="form-group" style="padding-right: 80%;">
+
+                            @*<label asp-for="Stutus" class="control-label"></label>*@
+                            <div>
+                                <a class="badge badge-success " style="font-size:20px ; color: black; font-family: cursive;">Avilable</a>
+
+                            </div>
+                            <span asp-validation-for="Stutus" class="text-danger"></span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-group">
+                            @*<label asp-for="Stutus" class="control-label"></label>*@
+                            <div>
+                                <a class="badge badge-danger "  style="color: black; font-family: cursive;">Not Avilable</a>
+                            </div>
+                            <span asp-validation-for="Stutus" class="text-danger"></span>
+                        </div>
+
+                    }
+
+                <div class="form-group" style="margin-top:-15%">
+                    
+                    @*<label asp-for="Carid" style="padding-left:10px "></label>*@
+                    <select asp-for="Carid" class="form-control" asp-items="ViewBag.Carid"></select>
+                    <span asp-validation-for="Carid" class="text-danger"></span>
+                </div>
+                    <div class="form-group">
+                        @*<label hidden asp-for="UserId" style="padding-left:10%"></label>*@
+                        <select hidden asp-for="UserId" class="form-control" asp-items="ViewBag.Userid"></select>
+                        <span hidden asp-validation-for="UserId" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        @*<label  asp-for="CostPerDay" style="padding-left:10px "> </label>*@
+                        <input asp-for="CostPerDay"  value="@ViewBag.Costperday" />
+                        @*<select hidden disabled asp-for="CostPerDay" class="form-control" asp-items="ViewBag.Costperday"></select>*@
+                        <span  asp-validation-for="CostPerDay" class="text-danger"></span>
+                    </div>
+
+                  
+
+                    <div class="form-group form-button">
+                        <input type="submit" class="form-submit" value="Booking" />
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+

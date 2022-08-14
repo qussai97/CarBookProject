@@ -1,0 +1,66 @@
+﻿@model CarBookProject.Areas.AdminDashboard.Models.BookingCar
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/CompanyAccount/Views/Shared/_CLayout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>BookingCar</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BookingCarId" />
+            <div class="form-group">
+                <label asp-for="From_dt_Time" class="control-label"></label>
+                <input asp-for="From_dt_Time" class="form-control" />
+                <span asp-validation-for="From_dt_Time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ret_dt_Time" class="control-label"></label>
+                <input asp-for="Ret_dt_Time" class="form-control" />
+                <span asp-validation-for="Ret_dt_Time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stutus" class="control-label"></label>
+                <input asp-for="Stutus" class="form-control" />
+                <span asp-validation-for="Stutus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CostPerDay" class="control-label"></label>
+                <input asp-for="CostPerDay" class="form-control" />
+                <span asp-validation-for="CostPerDay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalPrice" class="control-label"></label>
+                <input asp-for="TotalPrice" class="form-control" />
+                <span asp-validation-for="TotalPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalDays" class="control-label"></label>
+                <input asp-for="TotalDays" class="form-control" />
+                <span asp-validation-for="TotalDays" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Carid" class="control-label"></label>
+                <select asp-for="Carid" class="form-control" asp-items="ViewBag.Carid"></select>
+                <span asp-validation-for="Carid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-warning">Back </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

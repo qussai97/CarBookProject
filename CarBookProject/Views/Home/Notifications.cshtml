@@ -1,0 +1,29 @@
+﻿@if (TempData["Notification"] != null)
+{
+    var Noti = Newtonsoft.Json.JsonConvert.DeserializeObject<CarBookProject.Classes.Notifications>(TempData.Peek("Notification").ToString());
+    <script src="~/libs/toastr/build/toastr.min.js"></script>
+
+    <script type="text/javascript">
+
+            (toastr.options = {
+            closeButton: true,
+                     debug: false,
+                     newestOnTop: true,
+                     progressBar: true,
+                     positionClass: "@Noti.PositionClass.ToString().Replace('_', '-')",
+                     preventDuplicates: true,
+                     onclick: null,
+                     showDuration: 300,
+                     hideDuration: 1000,
+                     timeOut: @(Noti.TimeOut*1000),
+                     extendedTimeOut: @(Noti.TimeOut *500),
+                     showEasing: "linear",  //swing linear
+                     hideEasing: "swing", //swing linear
+                     showMethod: "slideDown", //show fadeIn slideDown
+                     hideMethod: "slideUp" //hide fadeOut slideUp
+                });
+            var v = toastr["@Noti.Notification_Type"]('@Noti.Notification_txt', '@Noti.Notification_Title');
+    </script>
+}
+
+

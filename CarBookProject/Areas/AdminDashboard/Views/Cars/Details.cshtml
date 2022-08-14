@@ -1,0 +1,130 @@
+﻿@model CarBookProject.Areas.AdminDashboard.Models.Car
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/AdminDashboard/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+   
+    <hr />
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.CarName)
+                </th>
+
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ModelYear)
+                </th>
+
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.CountryOfManufacture)
+                </th>
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.CarImg)
+                </th>
+
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.CostPerDay)
+                </th>
+
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Start_Date)
+                </th>
+
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.End_Date)
+                </th>
+
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Venu)
+                </th>
+
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Avilable)
+                </th>
+
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.IsDeleted)
+                </th>
+
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.CreationDate)
+                </th>
+            </tr>
+            
+           
+        </thead>
+        <tbody >
+          
+            <tr>
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.CarName)
+                </td>
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.ModelYear)
+                </td>
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.CountryOfManufacture)
+                </td>
+
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.CarImg)
+                </td>
+
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.CostPerDay)
+                </td>
+
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.Start_Date)
+                </td>
+
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.End_Date)
+                </td>
+
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.Venu)
+                </td>
+
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.Category.CategoryName)
+                </td>
+
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.Avilable)
+                </td>
+
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.IsActive)
+                </td>
+
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.IsDeleted)
+                </td>
+
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.CreationDate)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.CarId">Edit</a> |
+    <a class="btn btn-warning" asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,143 @@
+﻿@model IEnumerable<Car>
+@{
+    ViewData["Title"] = "SearchCar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    select {
+        color: black;
+    }
+</style>
+<section class="ftco-section ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-md-12 featured-top">
+                <div class="row no-gutters">
+                    <div class="col-md-4 d-flex align-items-center">
+                        <form asp-action="SearchCar" asp-controller="Home" method="post" class="request-form ftco-animate bg-primary">
+                            <h2>Find Your Car</h2>
+                            <div class="form-group">
+                                <label name="name" class="label">Enter Car Name </label>
+                                <input name="Name" type="text" class="form-control" placeholder="BM, Mercedes, ..etc">
+                            </div>
+
+                            @*<div class="d-flex">
+                <div class="form-group mr-2">
+                    <label for="" class="label">Pick-up date</label>
+                    <input name="FromDate" type="text" class="form-control" id="book_pick_date" placeholder="Date">
+                </div>
+                <div class="form-group ml-2">
+                    <label for="" class="label">Drop-off date</label>
+                    <input name="EndDate" type="text" class="form-control" id="book_off_date" placeholder="Date">
+                </div>
+            </div>*@
+                            <div class="form-group">
+                                <label class="label"> Car Type </label>
+                                <div>
+                                    <select class="bg-primary" name="CategoryId" class="form-control" asp-items="ViewBag.CategoryId">
+                                        <option>Select Car Type BM , Mercedes</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="label"> Car Type </label>
+                                <div>
+                                    <select class="bg-primary " name="venu" class="form-control" asp-items="Html.GetEnumSelectList<Venu>() ">
+                                        <option selected>Select Car Sedan , Jeep, Suv,...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input oncancel="oncl()" type="submit" value="Search A Car Now" class="btn btn-secondary py-3 px-4">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-8 d-flex align-items-center">
+                        <div class="services-wrap rounded-right w-100">
+                            <h3 class="heading-section mb-4">Better Way to Rent Your Perfect Cars</h3>
+                            <div class="row d-flex mb-4">
+                                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                    <div class="services w-100 text-center">
+                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
+                                        <div class="text w-100">
+                                            <h3 class="heading mb-2">Choose Your Pickup Location</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                    <div class="services w-100 text-center">
+                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-handshake"></span></div>
+                                        <div class="text w-100">
+                                            <h3 class="heading mb-2">Select the Best Deal</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                    <div class="services w-100 text-center">
+                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-rent"></span></div>
+                                        <div class="text w-100">
+                                            <h3 class="heading mb-2">Reserve Your Rental Car</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<p><a href="#" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<section class="ftco-section ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+                <span class="subheading">What we offer</span>
+                <h2 class="mb-2">Cars For Rent</h2>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="carousel-car owl-carousel">
+                    @foreach (var c in Model)
+                    {
+                        <div class="item">
+                            <div class="car-wrap rounded ftco-animate">
+
+                                <div class="img rounded d-flex align-items-end"  >
+                                    <img src=@Url.Content(c.CarImg) style="width:100% ; height:100%">
+
+                                </div>
+                                @if (c.Avilable == true)
+                                {
+                                    <a class="badge badge-success " style="color: black; font-family: cursive;">Avilable</a>
+                                }
+                                else
+                                {
+                                    <a class="badge badge-danger" style="color: black; font-family: cursive;">Not Avilable</a>
+                                }
+                                <div class="text">
+                                    <h2 class="mb-0"><a href="#">@c.CarName</a> <span>@c.ModelYear</span></h2>
+                                    <div class="d-flex mb-3">
+                                        <span class="icon-car">: @c.Venu</span>
+                                        <p class="price ml-auto">$@(c.CostPerDay) <span>/day</span></p>
+                                    </div>
+                                    <p class="d-flex mb-0 d-block"><a asp-action="Booking" asp-controller="Home" asp-area="Customer" asp-route-id="@c.CarId" class="btn btn-primary py-2 mr-1">Book now</a> <a href="#" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    }
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+

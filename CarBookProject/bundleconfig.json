@@ -1,0 +1,28 @@
+[
+  //{
+  //  "outputFileName": "wwwroot/Min/css/Full.min.css",
+  //  "inputFiles": [
+  //    "wwwroot/css/bootstrap.min.css",
+  //    "wwwroot/css/icons.min.css",
+  //    "wwwroot/css/app.min.css",
+  //    "wwwroot/libs/toastr/build/toastr.min.css"
+  //  ]
+  //}
+
+  //,
+  {
+    "outputFileName": "wwwroot/Min/js/Full.min.js",
+    "inputFiles": [
+      "wwwroot/libs/jquery/jquery-3.5.1.min.js",
+      "wwwroot/libs/bootstrap/js/bootstrap.bundle.min.js",
+      "wwwroot/libs/metismenu/metisMenu.min.js",
+      "wwwroot/libs/simplebar/simplebar.min.js",
+      "wwwroot/libs/node-waves/waves.min.js",
+      "wwwroot/libs/waypoints/lib/jquery.waypoints.min.js",
+      "wwwroot/libs/jquery.counterup/jquery.counterup.min.js",
+      "wwwroot/js/app.js",
+      "wwwroot/libs/toastr/build/toastr.min.js",
+      "wwwroot/js/unobtrusive-ajax/jquery.unobtrusive-ajax.min.js"
+    ]
+  }
+]

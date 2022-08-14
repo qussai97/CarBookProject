@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/AdminDashboard/Views/Shared/_AdminLayout.cshtml";
+}
+<head>
+    <link rel="apple-touch-icon" sizes="76x76" href="~/assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="~/assets/img/favicon.png">
+    <title>
+        User Profile
+    </title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="~/css/StyleSheet_usarProfile.css" rel="stylesheet" />
+
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+    <!-- Nucleo Icons -->
+    <link href="~/assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="~/assets/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <!-- CSS Files -->
+    <link id="pagestyle" href="~/assets/css/material-dashboard.css?v=3.0.4" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+</head>
+
+<h1 style="text-align :center ;color:black ; font-family:'Bookman Old Style'">Welcome Admin _ @User.Identity.Name <span>  &#9786;</span></h1>
+
+<br />
+<br />
+<br />
+<div class="row container">
+
+
+
+    <div class="col-xl-4 col-sm-2 mb-xl-0 mb-2">
+        <div class="card">
+            <div class="card-header p-3 pt-2">
+                <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+                    <i class="material-icons opacity-10">directions_car</i>
+                </div>
+                <div class="text-end pt-1">
+                    <p class="text-sm mb-0 text-capitalize">Number Of Cars </p>
+                    <h4 class="mb-0"> @ViewBag.Cars</h4>
+                </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+                <p class="mb-0">Updated Before <span class="text-success text-sm font-weight-bolder"> 1 </span>Minute Ago  </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-sm-2 mb-xl-0 mb-2">
+        <div class="card">
+            <div class="card-header p-3 pt-2">
+                <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+                    <i class="material-icons opacity-10">done</i>
+                </div>
+                <div class="text-end pt-1">
+                    <p class="text-sm mb-0 text-capitalize">Number Of Booking </p>
+                    <h4 class="mb-0">@ViewBag.allBooking</h4>
+                </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+                <p class="mb-0">Updated Before <span class="text-success text-sm font-weight-bolder"> 1 </span>Minute Ago  </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4     col-sm-2" style="padding-bottom:20px">
+        <div class="card">
+            <div class="card-header p-3 pt-2">
+                <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+                    <i class="material-icons opacity-10">weekend</i>
+                </div>
+                <div class="text-end pt-1">
+                    <p class="text-sm mb-0 text-capitalize">Number Of Car Type </p>
+                    <h4 class="mb-0">@ViewBag.catogory</h4>
+                </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+                <p class="mb-0">Updated Before <span class="text-success text-sm font-weight-bolder"> 1 </span>Minute Ago  </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-4 col-sm-2">
+        <div class="card">
+            <div class="card-header p-3 pt-2">
+                <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+                    <i class="material-icons opacity-10">people</i>
+                </div>
+                <div class="text-end pt-1">
+                    <p class="text-sm mb-0 text-capitalize">Number Of User </p>
+                    <h4 class="mb-0">@ViewBag.user</h4>
+                </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+                <p class="mb-0">Updated Before <span class="text-success text-sm font-weight-bolder"> 1 </span>Minute Ago  </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-sm-2">
+        <div class="card">
+            <div class="card-header p-3 pt-2">
+                <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+                    <i class="material-icons opacity-10">people</i>
+                </div>
+                <div class="text-end pt-1">
+                    <p class="text-sm mb-0 text-capitalize">Number Of CompanyAccount </p>
+                    <h4 class="mb-0">@ViewBag.Company</h4>
+                </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+                <p class="mb-0">Updated Before <span class="text-success text-sm font-weight-bolder"> 1 </span>Minute Ago  </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-sm-2">
+        <div class="card">
+            <div class="card-header p-3 pt-2">
+                <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+                    <i class="material-icons opacity-10">people</i>
+                </div>
+                <div class="text-end pt-1">
+                    <p class="text-sm mb-0 text-capitalize">Number ContactUS Message  </p>
+                    <h4 class="mb-0">@ViewBag.Messages</h4>
+                </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+                <p class="mb-0">Updated Before <span class="text-success text-sm font-weight-bolder"> 1 </span>Minute Ago  </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
+
+

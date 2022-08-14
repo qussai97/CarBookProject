@@ -1,0 +1,88 @@
+﻿@model IEnumerable<CarBookProject.Models.ApplicationUser>
+
+@{
+    ViewData["Title"] = "ActiveUser";
+    Layout = "~/Areas/AdminDashboard/Views/Shared/_AdminLayout.cshtml";
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+         
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+        
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsUpdated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyAccount)
+            </th>
+      
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsUpdated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyAccount)
+            </td>
+
+
+            <td>
+                <form asp-action="ActiveUser" asp-controller="Users" method="post">
+
+                    
+                    <input type="hidden" name="Id" value="@item.Id" />
+                    <button type="submit" class="btn btn-success">Active</button>|
+                    @*<a asp-action="ActiveUser" class="btn btn-success" asp-route-id="@item.Id">Active</a>*@
+                </form>
+
+                <form asp-action="NotActiveUser" asp-controller="Users" method="post">
+
+                    <input type="hidden" name="Id" value="@item.Id" />
+
+                    <button type="submit" class="btn btn-danger">Not Active</button>|
+                    @*<a asp-action="ActiveUser" class="btn btn-success" asp-route-id="@item.Id">Active</a>*@
+                </form>
+                @*<a asp-action="NotActiveUser" class="btn btn-danger" asp-route-id="@item.Id"> Not Active</a> |*@
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+

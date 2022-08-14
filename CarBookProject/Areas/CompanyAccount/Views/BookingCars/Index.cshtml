@@ -1,0 +1,96 @@
+﻿@model IEnumerable<CarBookProject.Areas.AdminDashboard.Models.BookingCar>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/CompanyAccount/Views/Shared/_CLayout.cshtml";
+}
+
+
+
+@*<p>
+    <a asp-action="Create"class="btn btn-success">Create New</a>
+</p>*@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.From_dt_Time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ret_dt_Time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stutus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostPerDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalDays)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.applicationUser)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.From_dt_Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ret_dt_Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stutus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostPerDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalDays)
+            </td>
+            <td>
+                <img src=@Url.Content(item.Car.CarImg) width="70" style="border-radius:999px">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.applicationUser.UserName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BookingCarId"class="btn btn-primary">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BookingCarId"class="btn btn-info">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BookingCarId"class="btn btn-danger">Delete</a>
+            </td>
+            <td>
+                <form asp-action="ApprovedBooking" asp-controller="BookingCars" asp-area="CompanyAccount" method="post">
+
+
+                    <input type="hidden" name="Id" value="@item.BookingCarId" />
+                    <button type="submit" class="btn btn-success" style="padding-right:35px">Active</button>|
+                    @*<a asp-action="ActiveUser" class="btn btn-success" asp-route-id="@item.Id">Active</a>*@
+                </form>
+
+                <form asp-action="NotApprovedBooking" asp-controller="BookingCars" asp-area="CompanyAccount" method="post">
+
+                    <input type="hidden" name="Id" value="@item.BookingCarId" />
+
+                    <button type="submit" class="btn btn-danger">Not Active</button>|
+                    @*<a asp-action="ActiveUser" class="btn btn-success" asp-route-id="@item.Id">Active</a>*@
+                </form>
+                @*<a asp-action="NotActiveUser" class="btn btn-danger" asp-route-id="@item.Id"> Not Active</a> |*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
